@@ -31,7 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf OutputDir="$(Protobuf_OutputPath)" GrpcServices="None" ProtoRoot="." Link="Result/*.proto" Include="Result/*.proto" />
+    <Protobuf OutputDir="$(Protobuf_OutputPath)" GrpcServices="None" ProtoRoot="../" Include="../Netcorext.Contracts.Protobufs/Result/*.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="obj" />
   </ItemGroup>
   
   <Target Name="IncludeProjectReferences" DependsOnTargets="ResolveReferences">

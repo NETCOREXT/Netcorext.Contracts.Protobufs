@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>0</VersionMinor>
+    <VersionPatch>0</VersionPatch>
+    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <FileVersion>$(VersionMajor).$([System.DateTime]::UtcNow.ToString(yy)).$([System.DateTime]::UtcNow.ToString(MMdd)).$([System.DateTime]::UtcNow.ToString(HHmm))</FileVersion>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeProjectReferences</TargetsForTfmSpecificBuildOutput>
+    <Authors>NETCOREXT</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/NETCOREXT/Netcorext.Contracts.Protobufs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NETCOREXT/Netcorext.Contracts.Protobufs.git</RepositoryUrl>
+    <Description />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.20" />
+    <PackageReference Include="Grpc.Core" Version="2.46" />
+    <PackageReference Include="Grpc.Tools" Version="2.46">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf OutputDir="$(Protobuf_OutputPath)" GrpcServices="None" ProtoRoot="." Link="Result/*.proto" Include="Result/*.proto" />
+  </ItemGroup>
+  
+  <Target Name="IncludeProjectReferences" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <IncludeBuildOutput />
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
+
+</Project>

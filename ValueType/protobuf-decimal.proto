@@ -1,0 +1,8 @@
+syntax = "proto3";
+package netcorext.contracts.protobufs;
+option csharp_namespace = "Netcorext.Contracts.Protobufs";
+
+message ProtobufDecimal {
+  int32 precision = 1;
+  int32 scale = 2;
+}

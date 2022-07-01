@@ -31,10 +31,12 @@
 
   <ItemGroup>
     <Protobuf OutputDir="$(Protobuf_OutputPath)" GrpcServices="None" ProtoRoot="../" Include="../Netcorext.Contracts.Protobufs/Result/*.proto" />
+    <Protobuf OutputDir="$(Protobuf_OutputPath)" GrpcServices="None" ProtoRoot="../" Include="../Netcorext.Contracts.Protobufs/ValueType/*.proto" />
   </ItemGroup>
 
   <ItemGroup>
     <None Pack="true" Include="Result/*.proto" />
+    <None Pack="true" Include="ValueType/*.proto" />
   </ItemGroup>
   
 </Project>

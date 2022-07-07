@@ -5,4 +5,5 @@ option csharp_namespace = "Netcorext.Contracts.Protobufs";
 message ProtobufDecimal {
   int64 precision = 1;
   int32 scale = 2;
+  bool minus = 3;
 }
